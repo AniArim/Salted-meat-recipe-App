@@ -1,0 +1,105 @@
+
+<ItemLabel@Label>:
+    # создаем свой класс и через собаку от кого наследован
+    # здесь указываем параметры, применимые для всего приложения, чтобы не дублировать код
+    font_size: "20sp"
+
+    # выравниваем текст по левому краю. Чтобы работали haling и valign нужно задать размер текста
+    haling: "left"
+    valign: "middle"
+    text_size: self.size
+
+
+
+
+<Container>:
+    rows:3
+
+    text_input: text_input
+    salt: salt
+    nitro: nitro
+    sugar: sugar
+    starts: starts
+    time: time
+
+    AnchorLayout:
+        size_hint: 1, 0.15
+
+        TextInput:
+            id: text_input
+            font_size: "19sp"
+            multiline: False
+            input_type: "number"
+            input_filter: "int"
+            text: "Введите количество мяса в граммах:\n"
+
+
+    GridLayout:
+        cols: 3
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 0.8, 1
+            padding: [30, 0, 0, 0]
+
+            ItemLabel:
+                text: "Соль"
+            ItemLabel:
+                text: "Нитритная соль"
+            ItemLabel:
+                text: "Моносахара"
+            ItemLabel:
+                text: "Старты"
+            ItemLabel:
+                text: "Время засолки"
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 0.4, 1
+            padding: [15, 0, 0, 0]
+
+
+            ItemLabel:
+                id: salt
+                text: "0"
+            ItemLabel:
+                id: nitro
+                text: "0"
+            ItemLabel:
+                id: sugar
+                text: "0"
+            ItemLabel:
+                id: starts
+                text: "0"
+            ItemLabel:
+                id: time
+                text: "0"
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 0.2, 1
+
+
+            ItemLabel:
+                text: "г"
+            ItemLabel:
+                text: "г"
+            ItemLabel:
+                text: "г"
+            ItemLabel:
+                text: "г"
+            ItemLabel:
+                text: "ч"
+
+
+
+    BoxLayout:
+        size_hint: 0.9, 0.15
+        padding: [30, 0, 30, 30]
+
+        Button:
+            text: "Go"
+            font_size: 35
+
+            on_release:
+                root.calculate()
